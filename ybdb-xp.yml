@@ -7,12 +7,17 @@ services:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,api-docs
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
-      - SPRING_DATASOURCE_URL=jdbc:yugabytedb://ybdb:5433/yugabyte
+      - SPRING_DATASOURCE_URL=jdbc:yugabytedb://ybdb:5433/ybdbdemo
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
     ports:
       - 127.0.0.1:8080:8080
   ybdb:
+    container_name: ybdb
     image: yugabytedb/yugabyte:2.16.2.0-b41
+    environment:
+      - YSQL_PASSWORD=ybdbdemo
+      - YSQL_USER=ybdbdemo
+      - YSQL_DB=ybdbdemo
     # volumes:
     #   - ~/volumes/jhipster/ybdbdemo/ybdb/:/var/lib/ybdb/data/
     # If you want to expose these ports outside your dev PC,
