@@ -1,0 +1,11 @@
+tasks:
+  - name: ysql
+    command: |
+      gp ports await 5433
+      sleep 10
+      docker exec -e -it ybdb /home/yugabyte/tserver/bin/ysqlsh -h 0.0.0.0 -U yugabyte -d yugabyte
+  - name: ybdb-xp
+    init: |
+      docker-compose -f ybdb-xp.yml pull
+    command: |
+      docker-compose -f ybdb-xp.yml up
