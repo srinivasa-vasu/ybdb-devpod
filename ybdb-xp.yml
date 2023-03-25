@@ -13,7 +13,7 @@ services:
       - 127.0.0.1:8080:8080
   ybdb:
     container_name: ybdb
-    image: yugabytedb/yugabyte:2.16.2.0-b41
+    image: yugabytedb/yugabyte:2.14.7.0-b51
     environment:
       - YSQL_PASSWORD=ybdbdemo
       - YSQL_USER=ybdbdemo
